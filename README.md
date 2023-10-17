@@ -38,5 +38,5 @@ npm run dev
 8. Create a pull request to the `dev` branch not `main`
 
 # Merging
-Don't merge your brach yourself
+Don't merge your branch yourself
 
