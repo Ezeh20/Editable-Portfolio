@@ -1,7 +1,11 @@
 import './App.scss'
 
 function App() {
-    return <p>ase</p>
+    return (
+        <div>
+            <p>ase</p>
+        </div>
+    )
 }
 
 export default App
