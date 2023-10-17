@@ -1,12 +1,14 @@
-import './App.scss'
+import { Route, Routes } from 'react-router-dom'
+import Signup from './pages/signup'
+import Login from './pages/login'
 
 function App() {
-    const uuid = crypto.randomUUID()
-    console.log(uuid)
+    // const uuid = crypto.randomUUID()
     return (
-        <div>
-            <p>ase</p>
-        </div>
+        <Routes>
+            <Route index element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+        </Routes>
     )
 }
 
