@@ -1,7 +1,7 @@
 import './App.scss'
 
 function App() {
-    return <p>ase</p>
+    return <p>app</p>
 }
 
 export default App
