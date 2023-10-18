@@ -1,0 +1,43 @@
+.header {
+    position: sticky;
+    top: 0;
+    height: 4rem;
+
+    .nav {
+        display: flex;
+        height: 4rem;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            color: var(--secondary-color);
+            font-size: 18px;
+            font-weight: 500;
+
+            @media screen and (min-width:768px) {
+                font-size: 24px;
+            }
+        }
+
+        .link {
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: all 300ms ease-in-out;
+            &:hover{
+                transform: scale(1.1);
+                opacity: .8;
+            }
+        }
+    }
+
+    @media screen and (min-width:768px) {
+        height: 5rem;
+
+        .nav {
+            height: 5rem;
+        }
+        .link{
+            font-size: 18px;
+        }
+    }
+}
