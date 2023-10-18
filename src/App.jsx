@@ -3,7 +3,6 @@ import Signup from './pages/signup'
 import Login from './pages/login'
 
 function App() {
-    // const uuid = crypto.randomUUID()
     return (
         <Routes>
             <Route index element={<Login />} />
