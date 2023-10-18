@@ -1,8 +1,17 @@
-// font-family: 'Nunito Sans', sans-serif;
 :root {
-    --primary-color: #0B1220;
-    --text-color: #efefef;
+    --primary-bg: #0a192f;
+    --secondary-bg: #0B1220;
+    --secondary-color: #5cebcb;
+    --primary-font: 'Poppins', sans-serif;
+    --secondary-font: 'Nunito Sans', sans-serif;
+    --white: #fff;
+    --black: #000;
+    --header-color: #ccd6f6;
+    --text-color: #b9b9bb;
+    --border-radius-small: 10px;
+    --border-radius-medium: 20px;
 }
+
 
 * {
     padding: 0;
@@ -17,9 +26,9 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--primary-font);
     font-size: 16px;
     font-weight: 400;
     color: var(--text-color);
-    background-color: var(--primary-color);
+    background-color: var(--secondary-bg);
 }
