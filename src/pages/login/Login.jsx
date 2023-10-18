@@ -13,7 +13,7 @@ export function Login() {
         const isUser = getUsers.find(
             (entry) => entry.username === user.username
         )
-        console.log(isUser);
+        console.log(isUser)
         if (isUser) {
             const isPasswordCorrect = isUser.password === user.password
             if (isPasswordCorrect) {
