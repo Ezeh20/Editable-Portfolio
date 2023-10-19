@@ -18,6 +18,7 @@ export function Signup() {
     users.push(user)
     localStorage.setItem('users', JSON.stringify(users))
   }
+  
 
   return (
     <div className={styles.signup}>
