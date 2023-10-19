@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Input from '../../components/input'
 import styles from './Signup.module.scss'
+import Button from '../../components/button'
 
 const uuid = crypto.randomUUID()
 const initialState = {
@@ -33,9 +34,7 @@ export function Signup() {
         type="password"
         onChange={(e) => setUser({ ...user, password: e.target.value })}
       />
-      <button type="button" onClick={handleSubmit}>
-        submit
-      </button>
+      <Button type="button" label="Submit" onClick={handleSubmit} />
     </div>
   )
 }

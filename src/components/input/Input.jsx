@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import styles from './Imput.module.scss'
+import styles from './Input.module.scss'
 
 export function Input({ label, placeholder, id, type, className, ...props }) {
   return (

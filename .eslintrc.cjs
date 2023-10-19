@@ -31,6 +31,7 @@ module.exports = {
     'no-console': 0,
     'react/jsx-props-no-spreading': 0,
     'no-nested-ternary': 0,
+    'react/button-has-type': 0,
     'prettier/prettier': [
       'error',
       {
