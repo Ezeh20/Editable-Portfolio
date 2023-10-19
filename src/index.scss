@@ -6,15 +6,16 @@
     --secondary-font: 'Nunito Sans', sans-serif;
     --white: #fff;
     --black: #000;
+    --error:rgb(247, 25, 25);
     --header-color: #ccd6f6;
     --text-color: #b9b9bb;
     --border-radius-xs: 5px;
     --border-radius-small: 10px;
     --border-radius-medium: 20px;
     --linear-300: all 300ms linear;
-    --linear-500:all 500ms linear;
-    --ease-in-out-300:all 300ms ease-in-out;
-    --ease-in-out-500:all 500ms ease-in-out;
+    --linear-500: all 500ms linear;
+    --ease-in-out-300: all 300ms ease-in-out;
+    --ease-in-out-500: all 500ms ease-in-out;
 }
 
 
@@ -28,6 +29,10 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
 }
 
 body {
