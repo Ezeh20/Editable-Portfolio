@@ -2,14 +2,18 @@ import { Route, Routes } from 'react-router-dom'
 import Signup from './pages/signup'
 import Login from './pages/login'
 import Portfolio from './pages/portfolio'
+import Navigation from './components/navigation'
 
 function App() {
   return (
-    <Routes>
-      <Route index element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/portfolio" element={<Portfolio />} />
-    </Routes>
+    <>
+      <Navigation />
+      <Routes>
+        <Route index element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+      </Routes>
+    </>
   )
 }
 
