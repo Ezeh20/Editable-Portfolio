@@ -18,6 +18,7 @@ const initialState = {
 const errors = {
   username: '',
   email: '',
+  invalidEmail: '',
   password: '',
 }
 
@@ -26,6 +27,8 @@ export function Signup() {
   const [error, setError] = useState(errors)
   const [disabled, setDisabled] = useState(true)
   const { username, email, password } = user
+
+  console.log(error)
 
   /**
    * get the existing user's array from localStorage if any else create one.
@@ -36,11 +39,18 @@ export function Signup() {
     const users = JSON.parse(localStorage.getItem('users') || '[]')
     const isEmail = users.some((entry) => entry.email === user.email)
     const isUsername = users.some((entry) => entry.username === user.username)
-    const value = checkUser(isUsername, isEmail, password, error, setError)
+    const value = checkUser(
+      isUsername,
+      isEmail,
+      password,
+      error,
+      email,
+      setError
+    )
     if (value) return
     users.push(user)
     localStorage.setItem('users', JSON.stringify(users))
-  }, [error, user, password])
+  }, [error, user, password, email])
 
   /**
    * two conditions must be met before the submit button is enabled.
@@ -88,11 +98,17 @@ export function Signup() {
                   value={email.trim()}
                   id="email"
                   label="Email"
-                  error={!!error.email}
+                  error={!!error.email || !!error.invalidEmail}
                   placeholder="Enter your email address"
                   onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
-                <small>{error.email ? error.email : ''}</small>
+                <small>
+                  {error.email
+                    ? error.email
+                    : error.invalidEmail
+                    ? error.invalidEmail
+                    : ''}
+                </small>
               </div>
               <div className={styles.inputField}>
                 <Input

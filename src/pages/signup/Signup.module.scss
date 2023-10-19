@@ -2,17 +2,31 @@
     min-height: calc(100vh - 6rem);
     display: flex;
     align-items: center;
+    justify-content: center;
 
     .content {
         display: flex;
         height: calc(75vh);
-        gap: 6rem;
+        gap: 5%;
         align-items: center;
         justify-content: center;
+        width: 100%;
+
+        @media screen and (min-width: 500px) {
+            width: 500px;
+        }
+
+        @media screen and (min-width: 1024px) {
+            width: 100%;
+        }
 
         .imgContainer {
             width: 50%;
             height: 100%;
+
+            @media screen and (max-width:1024px) {
+                display: none;
+            }
 
             .img {
                 object-fit: cover;
@@ -25,11 +39,19 @@
         .form {
             width: 50%;
 
+            @media screen and (max-width:1024px) {
+                width: 100%;
+            }
+
             .head {
                 text-align: center;
-                font-size: 48px;
+                font-size: 32px;
                 color: var(--header-color);
                 margin-bottom: 2rem;
+
+                @media screen and (min-width: 768px) {
+                    font-size: 48px;
+                }
             }
 
             .formF {

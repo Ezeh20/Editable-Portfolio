@@ -1,5 +1,21 @@
-export const checkUser = (isUsername, isEmail, password, error, setError) => {
+import { checkEmail } from './checkEmail'
+
+export const checkUser = (
+  isUsername,
+  isEmail,
+  password,
+  error,
+  email,
+  setError
+) => {
   const newError = { ...error }
+  const isValid = checkEmail(email)
+
+  if (!isValid) {
+    newError.invalidEmail = 'invalid email'
+  } else {
+    newError.invalidEmail = ''
+  }
 
   if (isUsername) {
     newError.username = 'username already in use'
@@ -12,6 +28,7 @@ export const checkUser = (isUsername, isEmail, password, error, setError) => {
   } else {
     newError.email = ''
   }
+
   if (password.length < 8) {
     newError.password = 'password must be at least 8 characters long'
   } else {
@@ -19,7 +36,7 @@ export const checkUser = (isUsername, isEmail, password, error, setError) => {
   }
   setError(newError)
 
-  if (isUsername || isEmail || password.length < 8) {
+  if (isUsername || isEmail || password.length < 8 || !isValid) {
     return true
   }
   return false
