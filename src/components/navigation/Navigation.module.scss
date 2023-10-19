@@ -2,6 +2,7 @@
     position: sticky;
     top: 0;
     height: 4rem;
+    background: var(--secondary-bg);
 
     .nav {
         position: relative;
@@ -107,4 +108,8 @@
             font-size: 18px;
         }
     }
+}
+
+.headerAlt {
+    background: var(--primary-bg);
 }

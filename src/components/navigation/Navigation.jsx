@@ -24,7 +24,11 @@ export function Navigation() {
   }
 
   return (
-    <header className={styles.header}>
+    <header
+      className={
+        portfolio ? `${styles.header} ${styles.headerAlt}` : `${styles.header}`
+      }
+    >
       <Container>
         <nav className={styles.nav}>
           <p className={styles.logo}>{constants.logo}</p>
