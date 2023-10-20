@@ -1,8 +1,23 @@
-// font-family: 'Nunito Sans', sans-serif;
 :root {
-    --primary-color: #0B1220;
-    --text-color: #efefef;
+    --primary-bg: #0a192f;
+    --secondary-bg: #0B1220;
+    --secondary-color: #5cebcb;
+    --primary-font: 'Poppins', sans-serif;
+    --secondary-font: 'Nunito Sans', sans-serif;
+    --white: #fff;
+    --black: #000;
+    --error:rgb(247, 25, 25);
+    --header-color: #ccd6f6;
+    --text-color: #b9b9bb;
+    --border-radius-xs: 5px;
+    --border-radius-small: 10px;
+    --border-radius-medium: 20px;
+    --linear-300: all 300ms linear;
+    --linear-500: all 500ms linear;
+    --ease-in-out-300: all 300ms ease-in-out;
+    --ease-in-out-500: all 500ms ease-in-out;
 }
+
 
 * {
     padding: 0;
@@ -16,10 +31,15 @@ html {
     scroll-behavior: smooth;
 }
 
+img {
+    max-width: 100%;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    font-family: var(--primary-font);
     font-size: 16px;
     font-weight: 400;
     color: var(--text-color);
-    background-color: var(--primary-color);
+    background-color: var(--secondary-bg);
 }
