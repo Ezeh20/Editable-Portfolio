@@ -6,7 +6,7 @@
     --secondary-font: 'Nunito Sans', sans-serif;
     --white: #fff;
     --black: #000;
-    --error:rgb(247, 25, 25);
+    --error: rgb(247, 25, 25);
     --header-color: #ccd6f6;
     --text-color: #b9b9bb;
     --border-radius-xs: 5px;
@@ -42,4 +42,11 @@ body {
     font-weight: 400;
     color: var(--text-color);
     background-color: var(--secondary-bg);
+}
+
+.head {
+    color: var(--header-color);
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
 }

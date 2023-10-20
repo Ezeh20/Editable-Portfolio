@@ -69,14 +69,16 @@ export function Signup() {
   }, [handleDisable])
 
   return (
-    <Container>
+    <Container alternative>
       <div className={styles.signup}>
         <div className={styles.content}>
           <div className={styles.imgContainer}>
             <img src={signupImg} alt="img" className={styles.img} />
           </div>
           <form className={styles.form}>
-            <p className={styles.head}>Signup</p>
+            <h2 className="head" style={{ marginBottom: '2rem' }}>
+              Signup
+            </h2>
             <div className={styles.formF}>
               <div className={styles.inputField}>
                 <Input
@@ -131,7 +133,7 @@ export function Signup() {
                 onClick={handleSubmit}
               />
               <div className={styles.login}>
-                <p>or</p>
+                <p>Already have an account?</p>
                 <Link to="/" className={styles.link}>
                   Login
                 </Link>
