@@ -64,6 +64,7 @@ export function Login() {
                 Don`t have an account?{' '}
                 <Link to="/signup" className={styles.link}>
                   Sign Up
+                  
                 </Link>
               </p>
             </div>
