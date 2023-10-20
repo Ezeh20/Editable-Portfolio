@@ -7,7 +7,11 @@ export function Button({ label, className, disabled, type, ...props }) {
       type={type}
       disabled={disabled}
       {...props}
-      className={`${styles.btn} ${className}`}
+      className={
+        disabled
+          ? `${styles.btn} ${styles.btnAlt} ${className}`
+          : `${styles.btn} ${className}`
+      }
     >
       {label}
     </button>
