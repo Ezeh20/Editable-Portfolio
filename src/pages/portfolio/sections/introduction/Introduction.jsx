@@ -1,5 +1,12 @@
 import React from 'react'
+import Container from '../../../../components/container'
 
 export function Introduction() {
-    return <div>Introduction</div>
+  return (
+    <section>
+      <Container>
+        <p>Intro</p>
+      </Container>
+    </section>
+  )
 }
