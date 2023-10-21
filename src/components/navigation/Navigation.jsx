@@ -3,6 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { RiAppsLine } from 'react-icons/ri'
 import { useContext, useState } from 'react'
 import { FiLogOut } from 'react-icons/fi'
+import { HashLink } from 'react-router-hash-link'
 import Container from '../container'
 import { constants } from './constants'
 import styles from './Navigation.module.scss'
@@ -59,13 +60,14 @@ export function Navigation() {
                     const { id, text, to } = itm
                     return (
                       <li key={id} className={styles.li}>
-                        <Link
+                        <HashLink
                           to={to}
+                          smooth
                           className={styles.list}
                           onClick={() => setToggle((pre) => !pre)}
                         >
                           {text}
-                        </Link>
+                        </HashLink>
                       </li>
                     )
                   })}
