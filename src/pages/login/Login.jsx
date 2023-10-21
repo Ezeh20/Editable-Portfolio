@@ -12,6 +12,7 @@ const initialState = {
   username: '',
   password: '',
 }
+
 export function Login() {
   const { holdUser } = useContext(UserContext)
   const [user, setUser] = useState(initialState)
