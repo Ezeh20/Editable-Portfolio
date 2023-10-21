@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 import { RiAppsLine } from 'react-icons/ri'
 import { useContext, useState } from 'react'
+import { FiLogOut } from 'react-icons/fi'
 import Container from '../container'
 import { constants } from './constants'
 import styles from './Navigation.module.scss'
@@ -14,6 +15,16 @@ export function Navigation() {
   const login = location.pathname === '/'
   const signup = location.pathname === '/signup'
   const portfolio = location.pathname === '/portfolio'
+
+  const usernameLength = () => {
+    if (user?.username?.length > 4) {
+      const firstFourChars = user.username.slice(0, 4)
+      return `${firstFourChars}...`
+    }
+    return user.username
+  }
+
+  const displayName = usernameLength()
 
   const navigate = () => {
     if (login) {
@@ -59,7 +70,22 @@ export function Navigation() {
                     )
                   })}
                 </ul>
-                <div className={styles.user}>{user?.username}</div>
+                <div className={styles.userInformation}>
+                  <div className={styles.userData}>
+                    <div className={styles.person}>
+                      <div className={`${styles.userImage} bg text`} />
+                      <img
+                        src={`https://robohash.org/${user?.username}`}
+                        alt="user img"
+                        className={styles.robo}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.userAction}>
+                    <p className={styles.username}>{displayName}</p>
+                    <FiLogOut className={styles.logout} />
+                  </div>
+                </div>
               </div>
               {toggle ? (
                 <AiOutlineClose
