@@ -1,12 +1,14 @@
 import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 import { RiAppsLine } from 'react-icons/ri'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Container from '../container'
 import { constants } from './constants'
 import styles from './Navigation.module.scss'
+import { UserContext } from '../../context/userContext'
 
 export function Navigation() {
+  const { user } = useContext(UserContext)
   const location = useLocation()
   const [toggle, setToggle] = useState(false)
   const login = location.pathname === '/'
@@ -57,7 +59,7 @@ export function Navigation() {
                     )
                   })}
                 </ul>
-                <div className={styles.user}>user</div>
+                <div className={styles.user}>{user?.username}</div>
               </div>
               {toggle ? (
                 <AiOutlineClose
