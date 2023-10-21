@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 import { RiAppsLine } from 'react-icons/ri'
