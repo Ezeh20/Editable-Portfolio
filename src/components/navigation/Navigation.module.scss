@@ -4,17 +4,20 @@
     height: 4rem;
     background: var(--secondary-bg);
 
+
     .nav {
         position: relative;
         display: flex;
         height: 4rem;
         justify-content: space-between;
-        align-items: center;
+
 
         .logo {
             color: var(--secondary-color);
             font-size: 24px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
 
             @media screen and (min-width:768px) {
                 font-size: 28px;
@@ -23,14 +26,19 @@
 
         .menu {
             display: flex;
+            align-items: center;
+
 
             .portfolio {
                 position: fixed;
                 display: flex;
                 flex-direction: column;
+                justify-content: space-between;
                 right: -100%;
                 top: 3.5rem;
-                padding: 2rem;
+                width: 200px;
+                height: 250px;
+                padding: 1.5rem;
                 gap: 1.5rem;
                 transition: var(--linear-300);
                 border-radius: var(--border-radius-small);
@@ -43,10 +51,77 @@
 
                     .li {
                         .list {
-                            color: var(--header-color);
+                            color: var(--white);
 
                             &:hover {
                                 color: var(--secondary-color);
+                            }
+                        }
+                    }
+                }
+
+                .userInformation {
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    bottom: 0;
+
+                    @media screen and (min-width:768px) {
+                        justify-content: center;
+                        position: initial;
+                    }
+
+
+                    .userData {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        row-gap: 1rem;
+
+
+                        .person {
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 100vw;
+                            position: relative;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            top: -1rem;
+                            background: var(--secondary-color-light);
+
+                            .userImage {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 50%;
+                                position: absolute;
+                            }
+
+                            .robo {
+                                position: relative;
+                                z-index: 2;
+                                bottom: -.2rem;
+                            }
+
+                        }
+                    }
+
+                    .userAction {
+                        margin-top: -1.3rem;
+
+                        .username {
+                            font-size: 18px;
+                            color: var(--white);
+                        }
+
+                        .logout {
+                            font-size: 1.2rem;
+                            color: var(--error);
+                            font-weight: 600;
+
+                            &:hover {
+                                cursor: pointer;
                             }
                         }
                     }
@@ -56,7 +131,9 @@
                     position: initial;
                     background-color: initial;
                     flex-direction: initial;
-                    gap: 5rem;
+                    width: initial;
+                    height: initial;
+                    gap: 2.5rem;
 
                     .ul {
                         flex-direction: initial;
@@ -90,6 +167,8 @@
             font-weight: 500;
             transition: var(--ease-in-out-300);
             font-size: 18px;
+            display: flex;
+            align-items: center;
 
             &:hover {
                 transform: scale(1.1);
@@ -99,16 +178,17 @@
     }
 
     @media screen and (min-width:768px) {
-        height: 6rem;
+        height: 7rem;
 
         .nav {
-            height: 6rem;
+            height: 7rem;
+
             .link {
                 font-size: 20px;
             }
         }
 
-        
+
     }
 }
 
