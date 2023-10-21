@@ -1,5 +1,5 @@
 import React from 'react'
 
 export function Introduction() {
-    return <div>Introduction</div>
+  return <div>Introduction</div>
 }
