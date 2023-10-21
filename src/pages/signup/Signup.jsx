@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Input from '../../components/input'
 import styles from './Signup.module.scss'
 import Button from '../../components/button'
 import Container from '../../components/container'
 import signupImg from '../../../public/assets/signup-img.jpg'
 import { checkUser } from '../../utils/signup-auth'
+import loader from '../../../public/assets/loader.svg'
 
 const uuid = crypto.randomUUID()
 const initialState = {
@@ -26,9 +27,9 @@ export function Signup() {
   const [user, setUser] = useState(initialState)
   const [error, setError] = useState(errors)
   const [disabled, setDisabled] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const { username, email, password } = user
-
-  console.log(error)
+  const nav = useNavigate()
 
   /**
    * get the existing user's array from localStorage if any else create one.
@@ -36,21 +37,31 @@ export function Signup() {
    * create the user in the array if the user is not found.
    */
   const handleSubmit = useCallback(() => {
-    const users = JSON.parse(localStorage.getItem('users') || '[]')
-    const isEmail = users.some((entry) => entry.email === user.email)
-    const isUsername = users.some((entry) => entry.username === user.username)
-    const value = checkUser(
-      isUsername,
-      isEmail,
-      password,
-      error,
-      email,
-      setError
-    )
-    if (value) return
-    users.push(user)
-    localStorage.setItem('users', JSON.stringify(users))
-  }, [error, user, password, email])
+    setIsLoading((prev) => !prev)
+    setTimeout(() => {
+      const users = JSON.parse(localStorage.getItem('users') || '[]')
+      const isEmail = users.some((entry) => entry.email === user.email)
+      const isUsername = users.some((entry) => entry.username === user.username)
+      const randomTime = Math.floor(Math.random() * 4) + 2
+      const value = checkUser(
+        isUsername,
+        isEmail,
+        password,
+        error,
+        email,
+        setError
+      )
+      if (value) {
+        setIsLoading((prev) => !prev)
+        return
+      }
+      users.push(user)
+      localStorage.setItem('users', JSON.stringify(users))
+      setTimeout(() => {
+        nav('/')
+      }, randomTime)
+    }, 2000)
+  }, [error, user, password, email, nav])
 
   /**
    * two conditions must be met before the submit button is enabled.
@@ -126,12 +137,18 @@ export function Signup() {
                 />
                 <small>{error.password ? error.password : ''}</small>
               </div>
-              <Button
-                type="button"
-                disabled={disabled}
-                label="Submit"
-                onClick={handleSubmit}
-              />
+              {isLoading ? (
+                <div className="loaderContainer">
+                  <img src={loader} alt="loading" className="loader" />
+                </div>
+              ) : (
+                <Button
+                  type="button"
+                  disabled={disabled}
+                  label="Submit"
+                  onClick={handleSubmit}
+                />
+              )}
               <div className={styles.login}>
                 <p>Already have an account?</p>
                 <Link to="/" className={styles.link}>
