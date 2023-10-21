@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Container from '../../components/container'
 import styles from './Login.module.scss'
@@ -6,12 +6,14 @@ import loginImage from '../../../public/assets/login-img.jpg'
 import Input from '../../components/input'
 import Button from '../../components/button'
 import loader from '../../../public/assets/loader.svg'
+import { UserContext } from '../../context/userContext'
 
 const initialState = {
   username: '',
   password: '',
 }
 export function Login() {
+  const { holdUser } = useContext(UserContext)
   const [user, setUser] = useState(initialState)
   const [mainErr, setMainErr] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -39,6 +41,7 @@ export function Login() {
       if (isUser) {
         const isPasswordCorrect = isUser.password === user.password
         if (isPasswordCorrect) {
+          holdUser(isUser)
           setTimeout(() => {
             nav('/portfolio')
           }, 2000)
