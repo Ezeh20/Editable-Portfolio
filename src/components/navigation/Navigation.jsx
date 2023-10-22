@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 import { RiAppsLine } from 'react-icons/ri'
 import { useContext, useState } from 'react'
@@ -9,10 +9,13 @@ import Container from '../container'
 import { constants } from './constants'
 import styles from './Navigation.module.scss'
 import { UserContext } from '../../context/userContext'
+import loader from '../../../public/assets/loader.svg'
 
 export function Navigation() {
-  const { user } = useContext(UserContext)
+  const { user, holdUser } = useContext(UserContext)
+  const [loading, setLoading] = useState(false)
   const location = useLocation()
+  const nav = useNavigate()
   const [toggle, setToggle] = useState(false)
   const login = location.pathname === '/'
   const signup = location.pathname === '/signup'
@@ -20,13 +23,21 @@ export function Navigation() {
 
   const usernameLength = () => {
     if (user?.username?.length > 4) {
-      const firstFourChars = user.username.slice(0, 4)
+      const firstFourChars = user?.username.slice(0, 4)
       return `${firstFourChars}...`
     }
-    return user.username
+    return user?.username
   }
-
   const displayName = usernameLength()
+
+  const handleLogout = () => {
+    setLoading(true)
+    setTimeout(() => {
+      holdUser(null)
+      setLoading(false)
+      nav('/')
+    }, [1000])
+  }
 
   const navigate = () => {
     if (login) {
@@ -86,7 +97,18 @@ export function Navigation() {
                   </div>
                   <div className={styles.userAction}>
                     <p className={styles.username}>{displayName}</p>
-                    <FiLogOut className={styles.logout} />
+                    {loading ? (
+                      <img
+                        src={loader}
+                        alt="loader"
+                        style={{ width: '20px', height: '20px' }}
+                      />
+                    ) : (
+                      <FiLogOut
+                        onClick={handleLogout}
+                        className={styles.logout}
+                      />
+                    )}
                   </div>
                 </div>
               </div>

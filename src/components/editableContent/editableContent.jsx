@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 import React, { useState, useRef } from 'react'
 
-export function EditableElement({ initialValue, maxWords }) {
+export function EditableElement({ initialValue, maxWords, tag, className }) {
   const [isEditing, setIsEditing] = useState(false)
   const [value, setValue] = useState(initialValue)
   const contentRef = useRef(null)
@@ -71,31 +71,36 @@ export function EditableElement({ initialValue, maxWords }) {
 
   const dirValue = isEditing ? 'ltr' : 'auto'
   const wordCount = value.split(/\s+/).length
-  const showWordCount = `${wordCount}/${maxWords} words`
+  const showWordCount = `${wordCount}/${maxWords} word(s)`
+
+  const Element = React.createElement(
+    tag,
+    {
+      ref: contentRef,
+      onDoubleClick: handleDoubleClick,
+      onTouchStart: handleTouchStart,
+      onBlur: handleBlur,
+      contentEditable: isEditing,
+      suppressContentEditableWarning: true,
+      onInput: handleChange,
+      onKeyDown: handleKeyDown,
+      style: {
+        display: 'inline',
+        unicodeBidi: 'plaintext',
+        direction: dirValue,
+      },
+      className,
+    },
+    value
+  )
 
   return (
     <>
-      <span
-        ref={contentRef}
-        onDoubleClick={handleDoubleClick}
-        onTouchStart={handleTouchStart}
-        onBlur={handleBlur}
-        contentEditable={isEditing}
-        suppressContentEditableWarning
-        onInput={handleChange}
-        onKeyDown={handleKeyDown}
-        style={{
-          display: 'inline',
-          unicodeBidi: 'plaintext',
-          direction: dirValue,
-        }}
-      >
-        {value}
-      </span>
+      {Element}
       {isEditing && (
-        <div style={{ fontSize: '16px', color: '#ccd6f6', marginTop: '5px' }}>
+        <span style={{ fontSize: '16px', color: '#ccd6f6' }}>
           {showWordCount}
-        </div>
+        </span>
       )}
     </>
   )
@@ -104,9 +109,13 @@ export function EditableElement({ initialValue, maxWords }) {
 EditableElement.propTypes = {
   initialValue: PropTypes.string,
   maxWords: PropTypes.number,
+  tag: PropTypes.string,
+  className: PropTypes.string,
 }
 
 EditableElement.defaultProps = {
   initialValue: '',
   maxWords: undefined,
+  tag: 'div',
+  className: '',
 }
