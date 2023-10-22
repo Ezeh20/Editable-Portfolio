@@ -1,6 +1,6 @@
+import EditableElement from '../../../../components/editableContent'
 import { constants } from './constants'
 import styles from './Introduction.module.scss'
-import EditableElement from '../../../../components/editableContent/editableContent'
 
 const { greeting, name, field, content, img } = constants
 export function Introduction() {
@@ -11,10 +11,16 @@ export function Introduction() {
           <EditableElement initialValue={greeting} maxWords={4} />
         </h1>
         <div className={styles.group1}>
-          <h2 className={styles.name}>{name}</h2>
-          <p className={styles.field}>{field}</p>
+          <h2 className={styles.name}>
+            <EditableElement initialValue={name} maxWords={2} />
+          </h2>
+          <p className={styles.field}>
+            <EditableElement initialValue={field} maxWords={3} />
+          </p>
         </div>
-        <p className={styles.content}>{content}</p>
+        <p className={styles.content}>
+          <EditableElement initialValue={content} maxWords={150} />
+        </p>
       </div>
       <div className={styles.imgContainer}>
         <img src={img} alt="hero-section" className={styles.heroImg} />

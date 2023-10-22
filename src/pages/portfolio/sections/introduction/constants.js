@@ -7,6 +7,6 @@ export const constants = {
   content: `This is a random text that can 
   be edited as you please. Just give
   a warm and engaging intro. Introduce yourself, what you have been up to and what you are looking forward too. Don't talk about your 
-  cat or anything like that; just give a quick intro about yourself and endeavours.`,
+  cat or anything like that; just give a quick intro about yourself and endeavors.`,
   img: hero,
 }
