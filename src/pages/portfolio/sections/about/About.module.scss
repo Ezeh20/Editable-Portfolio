@@ -1,0 +1,43 @@
+.section {
+
+    .contentContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+            gap: 5rem;
+        }
+
+        .con {
+            width: 100%;
+
+            .content {
+                max-width: 600px;
+                word-break: break-all;
+                word-wrap: break-word;
+                font-size: 18px;
+            }
+
+        }
+
+        .imgContainer {
+            background: var(--secondary-color-light);
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            padding-top: 1rem;
+            max-width: 400px;
+
+            @media screen and (min-width:768px) {
+                max-width: 100%;
+            }
+
+            .heroImg {
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+            }
+        }
+    }
+}

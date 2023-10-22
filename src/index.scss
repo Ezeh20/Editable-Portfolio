@@ -2,19 +2,21 @@
     --primary-bg: #0a192f;
     --secondary-bg: #0B1220;
     --secondary-color: #5cebcb;
+    --secondary-color-light:rgba(92, 235, 204, 0.138);
     --primary-font: 'Poppins', sans-serif;
     --secondary-font: 'Nunito Sans', sans-serif;
     --white: #fff;
     --black: #000;
+    --error: rgb(247, 25, 25);
     --header-color: #ccd6f6;
-    --text-color: #b9b9bb;
+    --text-color: #ccd6f6;
     --border-radius-xs: 5px;
     --border-radius-small: 10px;
     --border-radius-medium: 20px;
     --linear-300: all 300ms linear;
-    --linear-500:all 500ms linear;
-    --ease-in-out-300:all 300ms ease-in-out;
-    --ease-in-out-500:all 500ms ease-in-out;
+    --linear-500: all 500ms linear;
+    --ease-in-out-300: all 300ms ease-in-out;
+    --ease-in-out-500: all 500ms ease-in-out;
 }
 
 
@@ -30,6 +32,10 @@ html {
     scroll-behavior: smooth;
 }
 
+img {
+    max-width: 100%;
+}
+
 body {
     min-height: 100vh;
     font-family: var(--primary-font);
@@ -37,4 +43,40 @@ body {
     font-weight: 400;
     color: var(--text-color);
     background-color: var(--secondary-bg);
+}
+
+.head {
+    color: var(--header-color);
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.mainError{
+    color: var(--error);
+    font-size: 18px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.loaderContainer {
+    display: flex;
+    justify-content: center;
+
+    .loader {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.title{
+    font-size: 42px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+
+    @media screen and (max-width:600px) {
+        font-size: 24px;
+        margin-bottom: 1.5rem;
+    }
 }

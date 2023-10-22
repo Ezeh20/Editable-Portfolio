@@ -1,7 +1,15 @@
 import PropTypes from 'prop-types'
 import styles from './Input.module.scss'
 
-export function Input({ label, placeholder, id, type, className, ...props }) {
+export function Input({
+  label,
+  placeholder,
+  id,
+  type,
+  error,
+  className,
+  ...props
+}) {
   return (
     <div className={`${styles.inputContainer} ${className}`}>
       <label htmlFor={id} className={styles.label}>
@@ -11,7 +19,9 @@ export function Input({ label, placeholder, id, type, className, ...props }) {
         id={id}
         type={type}
         placeholder={placeholder}
-        className={styles.input}
+        className={
+          error ? `${styles.input} ${styles.inputAlt}` : `${styles.input}`
+        }
         {...props}
       />
     </div>
@@ -23,6 +33,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   id: PropTypes.string,
   type: PropTypes.string,
+  error: PropTypes.bool,
   className: PropTypes.string,
 }
 
@@ -31,5 +42,6 @@ Input.defaultProps = {
   placeholder: 'some text',
   id: 'username',
   type: 'text',
+  error: false,
   className: '',
 }

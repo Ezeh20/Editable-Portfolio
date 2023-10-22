@@ -1,17 +1,43 @@
-import { Link, useLocation } from 'react-router-dom'
+/* eslint-disable import/no-extraneous-dependencies */
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
 import { RiAppsLine } from 'react-icons/ri'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { FiLogOut } from 'react-icons/fi'
+import { HashLink } from 'react-router-hash-link'
 import Container from '../container'
 import { constants } from './constants'
 import styles from './Navigation.module.scss'
+import { UserContext } from '../../context/userContext'
+import loader from '../../../public/assets/loader.svg'
 
 export function Navigation() {
+  const { user, holdUser } = useContext(UserContext)
+  const [loading, setLoading] = useState(false)
   const location = useLocation()
+  const nav = useNavigate()
   const [toggle, setToggle] = useState(false)
   const login = location.pathname === '/'
   const signup = location.pathname === '/signup'
   const portfolio = location.pathname === '/portfolio'
+
+  const usernameLength = () => {
+    if (user?.username?.length > 4) {
+      const firstFourChars = user?.username.slice(0, 4)
+      return `${firstFourChars}...`
+    }
+    return user?.username
+  }
+  const displayName = usernameLength()
+
+  const handleLogout = () => {
+    setLoading(true)
+    setTimeout(() => {
+      holdUser(null)
+      setLoading(false)
+      nav('/')
+    }, [1000])
+  }
 
   const navigate = () => {
     if (login) {
@@ -46,18 +72,45 @@ export function Navigation() {
                     const { id, text, to } = itm
                     return (
                       <li key={id} className={styles.li}>
-                        <Link
+                        <HashLink
                           to={to}
+                          smooth
                           className={styles.list}
                           onClick={() => setToggle((pre) => !pre)}
                         >
                           {text}
-                        </Link>
+                        </HashLink>
                       </li>
                     )
                   })}
                 </ul>
-                <div className={styles.user}>user</div>
+                <div className={styles.userInformation}>
+                  <div className={styles.userData}>
+                    <div className={styles.person}>
+                      <div className={`${styles.userImage} bg text`} />
+                      <img
+                        src={`https://robohash.org/${user?.username}`}
+                        alt="user img"
+                        className={styles.robo}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.userAction}>
+                    <p className={styles.username}>{displayName}</p>
+                    {loading ? (
+                      <img
+                        src={loader}
+                        alt="loader"
+                        style={{ width: '20px', height: '20px' }}
+                      />
+                    ) : (
+                      <FiLogOut
+                        onClick={handleLogout}
+                        className={styles.logout}
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
               {toggle ? (
                 <AiOutlineClose

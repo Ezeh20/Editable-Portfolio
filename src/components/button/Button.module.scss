@@ -16,3 +16,12 @@
         background-color: var(--secondary-color);
     }
 }
+
+.btnAlt {
+    &:hover {
+        opacity: .7;
+        cursor: not-allowed;
+        background-color: var(--white);
+    }
+
+}
