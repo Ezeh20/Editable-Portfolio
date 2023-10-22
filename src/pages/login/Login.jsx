@@ -15,11 +15,11 @@ const initialState = {
 
 export function Login() {
   const { holdUser } = useContext(UserContext)
-  const [user, setUser] = useState(initialState)
+  const [isUser, setIsUser] = useState(initialState)
   const [mainErr, setMainErr] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [disabled, setDisabled] = useState(true)
-  const { username, password } = user
+  const { username, password } = isUser
   const nav = useNavigate()
 
   const handleDisabled = useCallback(() => {
@@ -38,11 +38,11 @@ export function Login() {
     setIsLoading(true)
     setTimeout(() => {
       const getUsers = JSON.parse(localStorage.getItem('users') || '[]')
-      const isUser = getUsers.find((entry) => entry.username === user.username)
-      if (isUser) {
-        const isPasswordCorrect = isUser.password === user.password
+      const User = getUsers.find((entry) => entry.username === isUser.username)
+      if (User) {
+        const isPasswordCorrect = User.password === isUser.password
         if (isPasswordCorrect) {
-          holdUser(isUser)
+          holdUser({ ...isUser, isAuthenticated: true })
           setTimeout(() => {
             nav('/portfolio')
           }, 2000)
@@ -74,7 +74,9 @@ export function Login() {
                 id="username"
                 label="username"
                 placeholder="Enter your username"
-                onChange={(e) => setUser({ ...user, username: e.target.value })}
+                onChange={(e) =>
+                  setIsUser({ ...isUser, username: e.target.value })
+                }
               />
             </div>
             <div className={styles.password}>
@@ -83,7 +85,9 @@ export function Login() {
                 id="password"
                 label="Password"
                 placeholder="Enter your password"
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                onChange={(e) =>
+                  setIsUser({ ...isUser, password: e.target.value })
+                }
               />
             </div>
             {isLoading ? (
