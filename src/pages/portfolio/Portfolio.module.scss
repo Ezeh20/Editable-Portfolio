@@ -5,4 +5,12 @@
     @media screen and (min-width:768px) {
         min-height: calc(100vh - 7rem);
     }
+    .sections{
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
+        @media screen and (min-width:768px) {
+            gap: 8rem;
+        }
+    }
 }
