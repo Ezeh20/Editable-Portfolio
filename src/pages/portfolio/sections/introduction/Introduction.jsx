@@ -2,6 +2,7 @@ import EditableElement from '../../../../components/editableContent'
 import { constants } from './constants'
 import styles from './Introduction.module.scss'
 
+
 const { greeting, name, field, content, img } = constants
 export function Introduction() {
   return (
