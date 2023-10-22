@@ -113,15 +113,17 @@
                         .username {
                             font-size: 18px;
                             color: var(--white);
+                            text-transform: capitalize;
                         }
 
                         .logout {
                             font-size: 1.2rem;
-                            color: var(--error);
+                            color: var(--secondary-color);
                             font-weight: 600;
 
                             &:hover {
                                 cursor: pointer;
+                                color: var(--error);
                             }
                         }
                     }
