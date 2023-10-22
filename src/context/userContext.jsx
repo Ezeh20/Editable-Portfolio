@@ -1,10 +1,13 @@
-import { useState, createContext, useMemo, useEffect } from 'react'
+import { useState, createContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 export const UserContext = createContext()
 
 export function UserContextProvider({ children }) {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem('currentUser')
+    return savedUser ? JSON.parse(savedUser) : {}
+  })
 
   // hold the currentUser in localStorage on login
   const holdUser = (userData) => {
@@ -12,15 +15,8 @@ export function UserContextProvider({ children }) {
     localStorage.setItem('currentUser', JSON.stringify(userData))
   }
 
-  // presist the currentUser
-  useEffect(() => {
-    const savedUser = localStorage.getItem('currentUser')
-    if (savedUser) {
-      setUser(JSON.parse(savedUser))
-    }
-  }, [])
-
   const value = useMemo(() => ({ user, holdUser }), [user])
+
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }
 
