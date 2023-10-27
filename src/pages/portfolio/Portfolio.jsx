@@ -1,5 +1,5 @@
 import About from './sections/about'
-// import Contact from './sections/contact'
+import Contact from './sections/contact'
 // import Experience from './sections/experience'
 // import Works from './sections/works'
 import Introduction from './sections/introduction'
@@ -13,6 +13,7 @@ export function Portfolio() {
         <div className={styles.sections}>
           <Introduction />
           <About />
+          <Contact />
           {/* <Experience />
         <Works />
         <Contact /> */}

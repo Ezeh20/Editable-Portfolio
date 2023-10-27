@@ -35,6 +35,6 @@
     "postcss-loader": "^7.3.3",
     "prettier": "^3.0.3",
     "sass-loader": "^13.3.2",
-    "vite": "^4.4.11"
+    "vite": "^4.5.0"
   }
 }
